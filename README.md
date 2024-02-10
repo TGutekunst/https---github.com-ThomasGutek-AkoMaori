@@ -7,11 +7,11 @@ This repository contains the code for the Ako Māori Full-Stack web application,
 ### A2Controller.cs
 Description: This controller manages various endpoints for the website's API.
 ### Endpoints:
-/webapi/GetVersion: Retrieves the version of the API.
-/webapi/Logo: Retrieves the website's logo.
-/webapi/AllItems: Retrieves all items available on the website.
-/webapi/Items/{term}: Retrieves items based on a search term.
-/webapi/ItemImage/{id}: Retrieves the image of an item by its ID.
+/webapi/GetVersion: Retrieves the version of the API.__
+/webapi/Logo: Retrieves the website's logo.__
+/webapi/AllItems: Retrieves all items available on the website.__
+/webapi/Items/{term}: Retrieves items based on a search term.__
+/webapi/ItemImage/{id}: Retrieves the image of an item by its ID.__
 /webapi/GetComment/{id}: Retrieves a comment by its ID.
 /webapi/WriteComment: Writes a new comment.
 /webapi/Comments/{num}: Retrieves a specified number of comments.
