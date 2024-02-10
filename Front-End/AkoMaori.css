@@ -1,0 +1,105 @@
+/* Background */
+body {
+    background-image: linear-gradient(to right, red, black);
+}
+
+/* Whole tab */
+.tab {
+    border: 1px solid #ccc;
+    background-color: linear-gradient(to right, black, red);
+  }
+  
+  /* Tab buttons */
+ .tab button {
+    background-color: inherit;
+    float: middle;
+    border: none;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Background color of tab buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Separate tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+  /* Make tab text visible */
+  .tablinks {
+    color: white;
+  }
+
+  /* Headers */
+  .header {
+    font-weight: bold;
+    border-bottom: 5px solid white;
+    color: white
+  }
+
+  /* Paragraphs */
+  .text {
+    color: white;
+  }
+
+  /* Make comment box bigger */
+  .commentBox {
+    height:60px;
+    width:800px;
+    font-size:14pt;
+}
+
+  /* Shop search bar */
+  .searchBar{
+    background-color: gray;
+    color: white;
+    width: 95%;
+  }
+
+  /* Item titles */
+  .itemTitle {
+    color : white;
+    font-weight: bold;
+  }
+
+  /* Purchase button */
+  #buyButton {
+    margin : 35px;
+    padding : 25px
+  }
+  
+  /* Version */
+
+  #version {
+    color :white;
+    font-size: 8px;
+  }
+  
+ /* Shop item image */
+ .itemImage {
+  height: 100px;
+  width: 100px;
+ }
+
+ /* Game Table */
+ .gameCell {
+  color: white;
+  border-style: dotted;
+  border-color: white;
+  font-size: 50px;
+  padding: 50px;
+ }
+
+ /* Table images */
+ .gameImg {
+  height: 40px;
+  width: 40px;
+  border-style: dotted;
+  border-color: white;
+ }
