@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ako Māori</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="AkoMaori.css">
+        <link rel="icon" type="image/x-icon" href="https://cws.auckland.ac.nz/ako/api/Logo">
+    </head>
+    <body>
+        <script src="AkoMaori.js" async defer></script>
+        <!-- Tab headers-->
+        <div class="tab">
+            <img src="https://cws.auckland.ac.nz/ako/api/Logo" width="100" height="100">
+            <button class="tablinks" onclick="openTab('Home')">Home</button>
+            <button class="tablinks" onclick="openTab('GuestBook')">Guest Book</button>
+            <button class="tablinks" onclick="openTab('Shop');getItems();">Shop</button>
+            <button class="tablinks" onclick="openTab('UserRegistration')">User Registration</button>
+            <button id ="LoginTab" class="tablinks" onclick="openTab('UserLogin')">User Login</button>
+            <button class="tablinks" onclick="openTab('Events');getEventCount();">Events</button>
+            <button class="tablinks" onclick="openTab('LearningTeReo');getPairs();">Learning te reo</button>
+          </div>
+          <!--Log out button-->
+          <div>
+            <p id="CurrentUser" class="text" onclick="logOut();openTab('UserLogin'); refreshLog();"></p>
+          </div>
+          <!-- Tab content -->
+
+          <!--Home-->
+          <div id="Home" class="tabcontent" style="display:block">
+            <h3 class="header">Ako Māori</h3>
+            <p class="text">Nau mai, haere mai ki Ako Māori. No matter where you are on your journey of language learning, we welcome you with open arms.</p>
+            <p class="text">Our aim at Ako Māori is to provide you with a rich and immersive platform to learn, explore, and culture your knowledge of te reo Māori.
+                We have curated a range of resources, tools, and activities that will empower you to deepen your connection with this beautiful taonga.</p>
+            <p class="text"> As you naviagte through the depths of te ao Māori, we hope that you will find our platform as not just a learning tool, but a whare of inspiration and cultural enrichment.</p>
+            <p class="text">Together, let us contribute to the revitilization of te reo Māori, an essential part of Aoteroa's heritage. Kia kaha, be brave, and embrace this exciting journey</p>
+            <p class="text">Naumai, haere mai, welcome to Ako Māori</p><br>
+            <p id="version"></p>
+          </div>
+          
+          <!--Guest Book-->
+          <div id="GuestBook" class="tabcontent">
+            <h3 class="header">Pukapuka manuwhiri </h3>
+            <p class="text">Please sign our guest book, and remember to be respectful!</p>
+                <label class ="text">Comment:</label><br>
+                <input type="text" class="commentBox" id="Comment" name="Comment"><br>
+                <label class ="text">Your Name:</label><br>
+                <input type="text" id="Name" name="Name" size="100"><br>
+                <input type="submit" id="CommentButton" onclick="uploadComment()" value="Comment">
+            <p class="text">Recent Entires</p>
+            <iframe id="RecentEntries" src="https://cws.auckland.ac.nz/ako/api/Comments" width="300" height="400"></iframe>
+          </div>
+
+          <!--Shop-->
+          <div id="Shop" class="tabcontent">
+            <h3 class="header">Whare hokhoko</h3>
+            <input type="text" id="searchBar" class="searchBar" oninput="getNewItems()"><br>
+            <table id="ItemsTable"></table>
+          </div>
+
+          <!--User Registration-->
+          <div id="UserRegistration" class="tabcontent">
+              <h3 class="header">Pukapuka rēhita </h3>
+                <label class ="text">Username:</label><br>
+                <input type="text" id="UsernameReg" name="Username"><br>
+                <label class ="text">Password:</label><br>
+                <input type="password" id="PasswordReg" name="Password"><br>
+                <label class ="text">Address:</label><br>
+                <input type="text" id="AddressReg" name="Address"><br>
+                <input type="submit" id="Register" onclick="registerUser()" value="Register">
+                <p id="SuccessReg" class="text"></p>
+          </div>
+
+          <!--User Login-->
+          <div id="UserLogin" class="tabcontent">
+            <h3 class="header">Takiuru </h3>
+              <label class ="text">Username:</label><br>
+              <input type="text" id="Username" name="Username"><br>
+              <label class ="text">Password:</label><br>
+              <input type="password" id="Password" name="Password"><br>
+              <input type="submit" id="Login" onclick="userLogin(); refreshLog();" value="Login">
+              <p id="failLog" class="text"></p>
+            </div>
+
+          <!--Events-->
+          <div id="Events" class="tabcontent">
+            <h3 class="header">Kauhau</h3>     
+              <table id="EventsTable"></table>
+          </div>
+
+          <!--Learning te reo-->
+          <div id="LearningTeReo" class="tabcontent">
+            <h3 class="header">Mahi</h3>
+            <p class = "text">There are two sets of items; each item in the first set should correspond with an item in the second set.
+              The first set of items is displayed in the first column, and the second set is located in the third column.
+              Please carefully drag each item from the third column and drop it into the second column, ensuring that each dropped item correctly corresponds to the item in the first column.
+              Please note, once an item has been placed in the second column, it cannot be moved again.
+            </p>
+            
+            <button onclick="openTab('LearningTeReo');getPairs();">Restart</button>
+            <table id="GameTable"></table>
+            <button id="Check" onclick="check()">Check Answers</button>
+            <p id ="ScoreText" class="text"> </p>
+          </div>
+    </body>
+</html>
