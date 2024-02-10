@@ -27,6 +27,140 @@ namespace A2.Controllers
         {
             _repository = repository;
         }
+         [HttpGet("GetVersion")]
+        public ActionResult<string> GetVersion(){
+            return Ok("1.0.0 (Ngongotahā) by zjes252");
+
+        }
+
+
+        [HttpGet("Logo")]
+        public ActionResult Logo()
+        {
+            string path = Directory.GetCurrentDirectory();
+            string imgDir = Path.Combine(path, "Logos");
+            string fileName = Path.Combine(imgDir, "Logo" + ".png");
+            string respHeader = "image/png";
+            return PhysicalFile(fileName, respHeader);
+        }
+        [HttpGet("AllItems")]
+        public ActionResult<IEnumerable<Product>> AllItems()
+        {
+            IEnumerable<Product> products = _repository.GetAllProducts();
+            return Ok(products);
+
+        }
+
+        // GET /Items/{term}
+        [HttpGet("Items/{term}")]
+        public ActionResult<IEnumerable<Product>> Items(string term)
+        {
+            IEnumerable<Product> products = _repository.GetItemsByName(term);
+
+            return Ok(products);
+
+        }
+
+
+
+        [HttpGet("ItemImage/{id}")]
+        public ActionResult ItemImage(string id)
+        {
+            string path = Directory.GetCurrentDirectory();
+            string imgDir = Path.Combine(path, "ItemsImages");
+            string fileName1 = Path.Combine(imgDir, id + ".png");
+            string fileName2 = Path.Combine(imgDir, id + ".jpg");
+            string fileName3 = Path.Combine(imgDir, id + ".gif");
+            string fileName4 = Path.Combine(imgDir, id + ".svg");
+            string fileName5 = Path.Combine(imgDir, "default.png");
+            string respHeader = "";
+            string fileName = "";
+
+            if (System.IO.File.Exists(fileName2))
+            {
+                respHeader = "image/jpeg";
+                fileName = fileName2;
+
+            }
+            else if (System.IO.File.Exists(fileName1))
+            {
+
+                respHeader = "image/png";
+                fileName = fileName1;
+
+            }
+            else if (System.IO.File.Exists(fileName3))
+            {
+                respHeader = "image/gif";
+                fileName = fileName3;
+
+            }
+            else if (System.IO.File.Exists(fileName4))
+            {
+                
+                respHeader = "image/svg+xml";
+                fileName = fileName4;
+                
+                //return < svg width = "100" height = "100" >{ { PhysicalFile(fileName5, "image/png") } }</ svg > ;
+            }
+            else
+            {
+                return PhysicalFile(fileName5, "image/png");
+            }
+
+            return PhysicalFile(fileName, respHeader);
+        }
+
+        // GET /GetComment/{id}
+        [HttpGet("GetComment/{id}")]
+        public ActionResult<Comment> GetComment(int id)
+        {
+            Comment comment = _repository.GetCommentByID(id);
+
+            if (comment == null)
+                return BadRequest("Comment " + id.ToString() + " does not exist.");
+
+            else
+            {
+                return Ok(comment);
+            }
+            
+
+        }
+        [HttpPost("WriteComment")]
+        public ActionResult<Comment> WriteComment(CommentInputDto comment)
+
+        {
+            DateTime currentDateTime = DateTime.Now;
+            string formattedDateTime = currentDateTime.ToString("yyyyMMddTHHmmssZ");
+            var ipAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+
+            Comment c = new Comment {UserComment = comment.UserComment, Name = comment.Name };
+            c.IP = ipAddress;
+            c.Time = formattedDateTime;
+            Comment addedComment = _repository.AddWriteComment(c);
+            return CreatedAtAction(nameof(GetComment), new { id = addedComment.Id }, addedComment);
+        }
+        // GET /webapi/Comments/{num}
+        [HttpGet("Comments/{num}")]
+        public ActionResult<IEnumerable<Comment>> Comments(int num=5)
+        {
+            
+            IEnumerable<Comment> comments = _repository.GetAllComment().Reverse();
+            IEnumerable<Comment> toComments = new List<Comment>();
+            int itemInList = comments.Count();
+
+            if (itemInList >= num)
+            {
+                toComments = comments.Take(num);
+            }
+            else if (itemInList < num)
+            {
+                toComments = comments;
+            }
+            return Ok(toComments);
+
+        }
         [HttpPost("Register")]
         public ActionResult<String> Register(User user)
         {

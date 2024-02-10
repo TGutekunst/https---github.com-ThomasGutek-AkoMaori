@@ -15,13 +15,20 @@ namespace A2.Data
 
         //public Product GetProductByID(int id);
         //public ActionResult<String> Register(User user);
+        public IEnumerable<Product> GetAllProducts();
+        public Product GetProductByID(int id);
+        public Comment GetCommentByID(int id);
+        public IEnumerable<Product> GetItemsByName(string name);
+        public Comment AddWriteComment(Comment comment);
+        public IEnumerable<Comment> GetAllComment();
+        public void SaveChanges();
+       
         public User UserInDbbool(User user);
         public User AddUser(User user);
 
         public bool ValidLogin(string userName, string password);
 
         public bool ValidLoginOrganizer(string userName, string password);
-        public Product GetProductByID(int id);
 
         public Event AddEvent(Event newEvent);
         public int numEvent();

@@ -22,7 +22,50 @@ namespace A2.Data
             _dbContext = dbContext;
         }
 
+         public IEnumerable<Product> GetAllProducts()
+        {
 
+            IEnumerable<Product> products = _dbContext.Products.ToList<Product>();
+
+            return products;
+        }
+
+        public Product GetProductByID(int id)
+        {
+            Product product = _dbContext.Products.FirstOrDefault(e => e.Id == id);
+            return product;
+        }
+        
+
+        public IEnumerable<Product> GetItemsByName(string term)
+        {
+            IEnumerable<Product> products = _dbContext.Products.Where(e => (e.Name.ToLower()).Contains(term.ToLower()));
+            return products;
+        }
+
+        public Comment GetCommentByID(int id)
+        {
+            Comment comment = _dbContext.Comments.FirstOrDefault(e => e.Id == id);
+            return comment;
+        }
+
+        public Comment AddWriteComment(Comment comment)
+        {
+            EntityEntry<Comment> e = _dbContext.Comments.Add(comment);
+            Comment c = e.Entity;
+            _dbContext.SaveChanges();
+            return c;
+        }
+        public IEnumerable<Comment> GetAllComment()
+        {
+            IEnumerable<Comment> comments = _dbContext.Comments.ToList<Comment>();
+
+            return comments;
+        }
+        public void SaveChanges()
+        {
+            _dbContext.SaveChanges();
+        }
         public User UserInDbbool(User user)
         {
             //userInDb = _repository.UserInDbbool(user);
@@ -55,11 +98,6 @@ namespace A2.Data
             else
                 return true;
         }
-        public Product GetProductByID(int id)
-        {
-            Product product = _dbContext.Products.FirstOrDefault(e => e.Id == id);
-            return product;
-        }
         public Event AddEvent(Event newEvent)
         {
             EntityEntry<Event> e = _dbContext.Events.Add(newEvent);
@@ -78,10 +116,6 @@ namespace A2.Data
             Event dbEvent = _dbContext.Events.FirstOrDefault(e => e.Id == id);
             return dbEvent;
 
-        }
-        public void SaveChanges()
-        {
-            _dbContext.SaveChanges();
         }
 
     }
