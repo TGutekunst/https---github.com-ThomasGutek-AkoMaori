@@ -29,7 +29,7 @@ namespace A2.Controllers
         }
          [HttpGet("GetVersion")]
         public ActionResult<string> GetVersion(){
-            return Ok("1.0.0 (Ngongotahā) by zjes252");
+            return Ok("1.0.0 (Ngongotahā) by Thomas Gutekunst");
 
         }
 
