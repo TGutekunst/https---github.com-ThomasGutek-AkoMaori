@@ -8,18 +8,18 @@ This repository contains the code for the Ako Māori Full-Stack web application,
 Description: This controller manages various endpoints for the website's API.
 ### Endpoints:
 /webapi/GetVersion: Retrieves the version of the API.  
-/webapi/Logo: Retrieves the website's logo.
-/webapi/AllItems: Retrieves all items available on the website.
-/webapi/Items/{term}: Retrieves items based on a search term.
-/webapi/ItemImage/{id}: Retrieves the image of an item by its ID.
-/webapi/GetComment/{id}: Retrieves a comment by its ID.
-/webapi/WriteComment: Writes a new comment.
-/webapi/Comments/{num}: Retrieves a specified number of comments.
-/webapi/Register: Registers a new user.
-/webapi/PurchaseItem/{id}: Initiates the purchase of an item.
-/webapi/AddEvent: Adds a new event to the system.
-/webapi/EventCount: Retrieves the count of events.
-/webapi/Event/{id}: Retrieves details of a specific event.
+/webapi/Logo: Retrieves the website's logo.  
+/webapi/AllItems: Retrieves all items available on the website.   
+/webapi/Items/{term}: Retrieves items based on a search term.  
+/webapi/ItemImage/{id}: Retrieves the image of an item by its ID.  
+/webapi/GetComment/{id}: Retrieves a comment by its ID.  
+/webapi/WriteComment: Writes a new comment.  
+/webapi/Comments/{num}: Retrieves a specified number of comments.  
+/webapi/Register: Registers a new user.  
+/webapi/PurchaseItem/{id}: Initiates the purchase of an item.  
+/webapi/AddEvent: Adds a new event to the system.  
+/webapi/EventCount: Retrieves the count of events.  
+/webapi/Event/{id}: Retrieves details of a specific event.  
 
 ### Database
 The Back-End uses a SQLite database with 5 tables- Comments, Events, Organizers, Products, Users- as described in the Models folder.
