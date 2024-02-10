@@ -20,6 +20,10 @@ Description: This controller manages various endpoints for the website's API.
 /webapi/AddEvent: Adds a new event to the system.
 /webapi/EventCount: Retrieves the count of events.
 /webapi/Event/{id}: Retrieves details of a specific event.
+
+### Database
+The Back-End uses a SQLite database with 5 tables- Comments, Events, Organizers, Products, Users- as described in the Models folder.
+
 ### Authorization
 The controller includes authorization attributes to restrict access to certain endpoints:
 Authorize(Policy = "UserOnly"): Allows access only to authenticated users.
@@ -60,9 +64,9 @@ To run the Ako Māori web application locally, simply clone this repository and 
 
 Once the application is running, you can navigate through the different tabs to explore various features such as the guest book, shop, events, and learning te reo.
 
-### Project Status
+## Project Status
 
-Due to a faulty hard drive, the back end was lost. Because of this, I implemented the API server that the professor provided for students who did not complete the back end. Due to time constraints, I don't have availability to debug the issues that arose from this, but will look to fix it this summer.
+The professor instructed us to use a separate back-end for our website that he designed so students can still build the front-end even if they did not complete the first part of the course. If we got 100%, which I did, then the back-end's are identical, aside from the matching pairs which the professor gave us. I will look to perfect the final bugs during the Summer.
 
 ## Bugs
 
