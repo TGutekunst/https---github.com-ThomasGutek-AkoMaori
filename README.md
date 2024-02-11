@@ -39,8 +39,8 @@ Handle the responses returned by the API.
 The backend relies on external dependencies for various functionalities such as logging, authorization, and file operations. .NET7 must be installed to run APIs in Swagger simulator or to implement in the Front-End.
 ### Notes
 Ensure proper authentication and authorization mechanisms are in place to secure sensitive endpoints.
-Validate input data to prevent security vulnerabilities such as SQL injection and cross-site scripting (XSS).
-Handle errors gracefully and provide informative responses to clients.
+Validate input data to prevent security vulnerabilities such as SQL injection and cross-site scripting.
+The A2 stands for Assignment 2.
 
 ## Front-End
 
